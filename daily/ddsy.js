@@ -21,7 +21,7 @@ APP 都可以找到这三个值
 7、所有直接或间接使用、查看此脚本的人均应该仔细阅读此声明。本人保留随时更改或补充此声明的权利。一旦您使用或复制了此脚本，即视为您已接受此免责声明。
 */
 
-const { Env } = require("./tools/env")
+const { Env } = require("../tools/env")
 const $ = new Env("叮当快药");
 let ckName = `ddky`;
 const strSplitor = "#";
