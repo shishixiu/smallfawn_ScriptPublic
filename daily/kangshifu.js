@@ -24,6 +24,7 @@ const { Env } = require("../tools/env")
 const $ = new Env("康师傅畅饮社");
 let ckName = `ksfcys`;
 const strSplitor = "#";
+
 const axios = require("axios");
 const defaultUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.31(0x18001e31) NetType/WIFI Language/zh_CN miniProgram"
 
@@ -45,17 +46,21 @@ class Task {
 		let options = {
 			url: `https://club.biqr.cn/api/signIn/integralSignIn`,
 			headers: {
-				"accept": "application/json, text/plain, */*",
-				"accept-language": "zh-CN,zh;q=0.9",
-				"content-type": "application/x-www-form-urlencoded;",
-				"sec-fetch-dest": "empty",
-				"sec-fetch-mode": "cors",
-				"sec-fetch-site": "cross-site",
-				"token": this.token,
-				"xweb_xhr": "1"
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090a13) UnifiedPCWindowsWechat(0xf254173b) XWEB/19027',
+				'Accept': 'application/json, text/plain, */*',
+				'xweb_xhr': '1',
+				'Content-Type': 'application/x-www-form-urlencoded;',
+				'Token': '' + this.token,
+				'Sec-Fetch-Site': 'cross-site',
+				'Sec-Fetch-Mode': 'cors',
+				'Sec-Fetch-Dest': 'empty',
+				'Referer': 'https://servicewechat.com/wx54f3e6a00f7973a7/795/page-frame.html',
+				'Accept-Language': 'zh-CN,zh;q=0.9'
 			},
 			method: 'POST',
-			data: {}
+			data: {
+
+			}
 		}
 		let { data: result } = await axios.request(options);
 		if (result.code == 0) {
@@ -94,13 +99,13 @@ async function getNotice() {
 			headers: {
 				"User-Agent": defaultUserAgent,
 			},
-            timeout:3000
+			timeout: 3000
 		}
 		let {
 			data: res
 		} = await axios.request(options);
 		$.log(res)
 		return res
-	} catch (e) {}
+	} catch (e) { }
 
 }
